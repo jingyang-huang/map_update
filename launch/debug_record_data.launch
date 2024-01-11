@@ -1,0 +1,18 @@
+<launch>
+
+    
+    <!-- Parameters -->
+    <arg name="RecordPrefix" default="$(find map_update)/record_128/" />
+    <rosparam file="$(find map_update)/config/params_update.yaml" command="load" />
+   
+
+    <!--- Map Update -->
+    <node name="record_data_node"  pkg="map_update" type="debug_record_data"     output="screen" 	respawn="false"/>
+
+
+    <!--- Run Rviz-->
+    <!--
+    <node pkg="rviz" type="rviz" name="$(arg project)_rviz" args="-d $(find lio_sam)/launch/include/config/rviz.rviz" />
+     -->
+
+</launch>

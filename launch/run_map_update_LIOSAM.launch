@@ -1,0 +1,25 @@
+<launch>
+
+    <!-- Parameters -->
+    <arg name="ReadMmapfile" default="campus.pcd" />
+    <arg name="ReadTffile"  default= "readtf.txt"  />
+    <arg name="ReadScanDir"  default= ""  />
+    <arg name="SavePcdfile" default="voxCloudmap_2.pcd" />  <!--arg只是变量名-->
+
+    <param name="ReadMmapfile" type="string" value="$(arg ReadMmapfile)" />
+    <param name="ReadTffile" type="string" value="$(arg ReadTffile)" />
+    <param name="ReadScanDir" type="string" value="$(arg ReadScanDir)" />
+    <param name="SavePcdfile" type="string" value="$(arg SavePcdfile)" />
+
+    <rosparam file="$(find map_update)/config/params_update.yaml" command="load" />
+    <!--- Map Update -->
+    <node name="map_update_node"  pkg="map_update" type="map_update_LIOSAM"     output="screen" 	respawn="false"/>
+        
+
+
+    <!--- Run Rviz-->
+    <!--
+    <node pkg="rviz" type="rviz" name="$(arg project)_rviz" args="-d $(find lio_sam)/launch/include/config/rviz.rviz" />
+     -->
+
+</launch>

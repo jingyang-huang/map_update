@@ -1,0 +1,29 @@
+update:
+  #string
+  #ReadPrefix: "/home/dr-slamintern-hjy/map_update_ws/data/yuanqu_data/other/Scans/" #"/home/dr-slamintern-hjy/map_update_ws/data/record/"
+  #ReadTfname: "optimized_poses.txt" 
+  #SavePrefix: "/home/dr-slamintern-hjy/map_update_ws/data/"
+  #Mmapname: "campus_2.pcd"
+  #Savevoxpcd: "voxCloudmap_2.pcd"
+  #int
+  init_logprob: 10
+  pos_logprob: 4
+  neg_logprob: -1
+  quene_size: 20
+  LOG_THRESH: 4000
+  #float
+  voxel_size: 0.2
+  Vmap_expand_ratio: 1.1  #选取>1
+  down_sample_size: 0.15 #不影响处理，只影响出去了的可视化
+  #bool
+  if_view_process: false
+  if_view_Vmap: false
+  if_view_ray: false
+  allow_plane_align: false
+
+record:
+  Scantopic: "/velodyne_points"
+  #RecordPrefix: "/home/dr-slamintern-hjy/map_update_ws/data/record/"
+  #SaveFilename: "tf.txt"
+
+  

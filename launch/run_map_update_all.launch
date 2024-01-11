@@ -1,0 +1,28 @@
+<launch>
+
+    <!-- Parameters -->
+    <arg name="RecordPrefix" default="$(find map_update)/record/" />
+    <arg name="DataBag" default="" />
+    <arg name="ReadMmapfile" default="arg1.pcd" />
+    <arg name="SavePcdfile" default="voxCloudmap_2.pcd" />  <!--arg只是变量名-->
+
+    <param name="RecordPrefix" type="string" value="$(arg RecordPrefix)" />
+    <param name="ReadMmapfile" type="string" value="$(arg ReadMmapfile)" />
+    <param name="SavePcdfile" type="string" value="$(arg SavePcdfile)" />
+
+    <rosparam file="$(find map_update)/config/params_update.yaml" command="load" />
+   
+    <!--- Step1 Play rosbag -->
+    <node pkg="rosbag" type="play" name="player"  args=" $(arg DataBag)"/> <!-- output="screen" -->>
+    <!--- Step2 Record Scans and tf -->
+    <node name="map_update_node"  pkg="map_update" type="map_update"  output="screen"  	respawn="false"/>
+
+    <!--- Step3 Map Update -->
+
+
+    <!--- Run Rviz-->
+    <!--
+    <node pkg="rviz" type="rviz" name="$(arg project)_rviz" args="-d $(find lio_sam)/launch/include/config/rviz.rviz" />
+     -->
+
+</launch>
